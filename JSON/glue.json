@@ -1,0 +1,26 @@
+{
+    "Test": {
+        "type": "Test",
+        "info": "Prueba de JSON"
+    },
+    "DumpXYZ": {
+        "type": "",
+        "info": ""
+    },
+    "DynamicProps": {
+        "type": "",
+        "info": ""
+    },
+    "openmd": {
+        "type": "",
+        "info": ""
+    },
+    "openmd_MPI": {
+        "type": "",
+        "info": ""
+    },
+    "StaticProps": {
+        "type": "",
+        "info": ""
+    }
+}

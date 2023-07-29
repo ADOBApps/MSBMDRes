@@ -1,0 +1,25 @@
+{
+	"MetaData":{
+		"restraint": {
+			"restraintType": ["Molecular", "Object"],
+			"objectSelection": "",
+			"molIndex": 0,
+			"displacementSpringConstant": "",
+			"twistSpringConstant": 0,
+			"swingXSpringConstant": 0,
+			"swingYSpringConstant": 0,
+			"restrainedTwistAngle": 0,
+			"restrainedSwingXAngle": 0,
+			"restrainedSwingYAngle": 0,
+			"print": ["false", "true"],
+			"useRestraints": ["false", "true"],
+			"Restraint_file": "file.inc",
+		},
+		"statFileFormat": "TIME|POTENTIAL_ENERGY",
+		"compressDumpFile": true,
+		"finalConfig": "sys_minimized_topol",
+		"sampleTime": 200,
+		"statusTime": 1
+	},
+	"MetaData_str": "minimizer {\n\tuseMinimizer = true;\n\tmethod = SD;\n\tmaxIterations = 5000;\n}\ndt = 1.0;\t\t\t\t\t\t// the time step for integration\n\t\trunTime = 1e3;\t\t\t // the total simulation run time\n\t\tseed = 985456376;\t\t// Seed value for random number generator (improve reproducibility)\n\t\tsampleTime = 200;\n\t\tstatusTime = 1;\n\t\t// EnergyMinimization\n\t\tstatFileFormat = \"TIME|POTENTIAL_ENERGY\";finalConfig = \"sys_minimized_topol\";\ncompressDumpFile = true;"
+}

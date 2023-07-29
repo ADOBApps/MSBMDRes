@@ -1,0 +1,27 @@
+{
+	"MetaData":{
+		"RNEMD":{
+			"useRNEMD": ["false", "true"],
+			"objectSelection": "",
+			"outputSelection": "",
+			"method": "",
+			"fluxType": "",
+			"kineticFlux": 0,
+			"momentumFlux": 0,
+			"momentumFluxVector": 0,
+			"exchangeTime": 0,
+			"slabWidth": 0,
+			"slabAcenter": 0,
+			"slabBcenter": 0,
+			"outputFileName": "",
+			"outputBins": 0,
+			"outputFields": "",
+		},
+		"statFileFormat": "TIME|POTENTIAL_ENERGY",
+		"compressDumpFile": true,
+		"finalConfig": "sys_minimized_topol",
+		"sampleTime": 200,
+		"statusTime": 1
+	},
+	"MetaData_str": "minimizer {\n\tuseMinimizer = true;\n\tmethod = SD;\n\tmaxIterations = 5000;\n}\ndt = 1.0;\t\t\t\t\t\t// the time step for integration\n\t\trunTime = 1e3;\t\t\t // the total simulation run time\n\t\tseed = 985456376;\t\t// Seed value for random number generator (improve reproducibility)\n\t\tsampleTime = 200;\n\t\tstatusTime = 1;\n\t\t// EnergyMinimization\n\t\tstatFileFormat = \"TIME|POTENTIAL_ENERGY\";finalConfig = \"sys_minimized_topol\";\ncompressDumpFile = true;"
+}

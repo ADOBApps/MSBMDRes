@@ -1,0 +1,34 @@
+{
+	"NVT":{
+		"MetaData":{
+			"minimizer":{
+				"useMinimizer": false,
+				"method": "SD",
+				"maxIterations": 1000
+			},
+			"ensemble": "NVT",
+			"statFileFormat": "TIME|TEMPERATURE|PRESSURE|VOLUME",
+			"compressDumpFile": false,
+			"finalConfig": "sys_NVT_topol",
+			"sampleTime": 200,
+			"statusTime": 1
+		},
+		"MetaData_str": "minimizer {\n\tuseMinimizer = false;\n\tmethod = SD;\n\tmaxIterations = 5000;\n}\nensemble=\"NVT\"\ndt = 1.0;\t\t\t\t\t\t// the time step for integration\n\t\trunTime = 1e3;\t\t\t // the total simulation run time\n\t\tseed = 985456376;\t\t// Seed value for random number generator (improve reproducibility)\n\t\tsampleTime = 200;\n\t\tstatusTime = 1;\n\t\t// EnergyMinimization\n\t\tstatFileFormat = \"TIME|POTENTIAL_ENERGY\";finalConfig = \"sys_NVT_topol\";\ncompressDumpFile = false;"
+	},
+	"NPTi": {
+		"MetaData":{
+			"minimizer":{
+				"useMinimizer": false,
+				"method": "SD",
+				"maxIterations": 1000
+			},
+			"ensemble": "NVT",
+			"statFileFormat": "TIME|TEMPERATURE|PRESSURE|VOLUME",
+			"compressDumpFile": false,
+			"finalConfig": "sys_NPTi_topol",
+			"sampleTime": 200,
+			"statusTime": 1
+		},
+		"MetaData_str": "minimizer {\n\tuseMinimizer = false;\n\tmethod = SD;\n\tmaxIterations = 5000;\n}\nensemble=\"NPTi\"\ndt = 1.0;\t\t\t\t\t\t// the time step for integration\n\t\trunTime = 1e3;\t\t\t // the total simulation run time\n\t\tseed = 985456376;\t\t// Seed value for random number generator (improve reproducibility)\n\t\tsampleTime = 200;\n\t\tstatusTime = 1;\n\t\t// EnergyMinimization\n\t\tstatFileFormat = \"TIME|POTENTIAL_ENERGY\";finalConfig = \"sys_NVT_topol\";\ncompressDumpFile = false;"
+	}
+}

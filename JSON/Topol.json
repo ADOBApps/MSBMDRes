@@ -1,0 +1,93 @@
+{
+	"OpenMD": {
+		"MetaData": {
+			"non-block": {
+				"forceField": "",
+				"electrostaticSummationMethod": "",
+				"electrostaticScreeningMethod": "",
+				"cutoffRadius": "",
+				"switchingRadius": "",
+				"dampingAlpha": "",
+				"targetTemp": 300,
+				"targetPressure": 1.0,
+				"tauThermostat": 1e3,
+				"tauBarostat": 1e4,
+				"dt": 1.0,
+				"runTime": 1e3,
+				"seed": 985456376,
+				"tempSet": "true",
+				"thermalTime": 10,
+				"sampleTime": 100,
+				"statusTime": 1,
+				"finalConfig": "",
+				"statFileFormat": "",
+				"compressDumpFile": false,
+				"useInitialExtendedSystemState": ["false", "true"],
+				"usePeriodicBoundaryConditions": ["false", "true"],
+				"useThermodynamicIntegration": ["false", "true"],
+				"thermodynamicIntegrationLambda": 0,
+				"thermodynamicIntegrationK": 0,
+				"useInitialTime": "false",
+				"ensemble": ""
+			},
+			"block":{
+				"include": "#include\"water.inc\"\n#include \"NanoStruct.inc\"",
+				"component": {
+					"type": "",
+					"nMol": 1
+				},
+				"minimizer": {
+					"useMinimizer": [false, true],
+					"method": ["SD", "CG", "BFGS"],
+					"maxIterations": 0,
+					"maxStationaryStateIteration": 0,
+					"rootEpsilon": 0,
+					"functionEpsilon": 0,
+					"gradientNormEpsilon": 0,
+				},
+				"restraint": {
+					"restraintType": ["Molecular", "Object"],
+					"objectSelection": "",
+					"molIndex": 0,
+					"displacementSpringConstant": "",
+					"twistSpringConstant": 0,
+					"swingXSpringConstant": 0,
+					"swingYSpringConstant": 0,
+					"restrainedTwistAngle": 0,
+					"restrainedSwingXAngle": 0,
+					"restrainedSwingYAngle": 0,
+					"print": ["false", "true"],
+					"useRestraints": ["false", "true"],
+					"Restraint_file": "file.inc",
+				},
+				"RNEMD":{
+					"useRNEMD": ["false", "true"],
+					"objectSelection": "",
+					"outputSelection": "",
+					"method": "",
+					"fluxType": "",
+					"kineticFlux": 0,
+					"momentumFlux": 0,
+					"momentumFluxVector": 0,
+					"exchangeTime": 0,
+					"slabWidth": 0,
+					"slabAcenter": 0,
+					"slabBcenter": 0,
+					"outputFileName": "",
+					"outputBins": 0,
+					"outputFields": "",
+				}
+			}
+		},
+		"Snapshot": {
+			"FrameData": {
+				"Time": 0,
+				"Hmat": "{{ Hxx, Hyx, Hzx }, { Hxy, Hyy, Hzy }, { Hxz, Hyz, Hzz }}",
+				"Thermostat": [0 , 0],
+				"Barostat": "{{ 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }}"
+			},
+			"StuntDoubles": {}
+		},
+
+	}
+}

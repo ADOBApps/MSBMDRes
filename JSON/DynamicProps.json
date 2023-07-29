@@ -1,0 +1,219 @@
+{
+	"test": {
+        "Description": "Test",
+        "xvg_info": "",
+        "xvg_filename": "test.xvg",
+        "dp_command": "--selecorr",
+        "id": 0
+    },
+    "scf": {
+        "Description": "Selection correlation function",
+        "xvg_info": "@ title \"Selection correlation function\"\n@ xaxis  label \"Time (fs)\"\n@ yaxis  label \"corrVal\"\n@ TYPE xy\n @ subtitle \"SelectionCorrFunc\"",
+        "xvg_filename": "scf.xvg",
+        "dp_command": "--selecorr",
+        "id": 1 
+    },
+    "cmsd": {
+        "Description": "Compute mean squared displacement",
+        "xvg_info": "@ title \"Root-Mean Squared Displacement\" @ xaxis  label \"Time (fs)\"\n@ yaxis  label \"corrVal (nm)\"\n@	 TYPE xy\n@	 subtitle \"RMSD\"",
+        "xvg_filename": "rmsd.xvg",
+        "dp_command": "--rcorr",
+        "id": 2
+    },
+    "msdbz": {
+        "Description": "Mean squared displacement binned by Z",
+        "xvg_info": "@ title \"Root-Mean Squared Displacement binned by Z\" @ xaxis  label \"Time (fs)\"\n@ yaxis  label \"corrVal (nm)\"\n@  TYPE xy\n@  subtitle \"RMSD-Z\"",
+        "xvg_filename": "rmsdZ.xvg",
+        "dp_command": "--rcorrZ",
+        "id": 3
+    },
+    "vaf": {
+        "Description": "velocity autocorrelation function",
+        "xvg_info": "@ title \"Velocity Correlation Function\"\n@ xaxis  label \"Time (fs)\"\n@ yaxis  label \"<v(0).v(t)>\"\n@ TYPE xy",
+        "xvg_filename": "vcf.xvg",
+        "dp_command": "--vcorr",
+        "id": 4
+    },
+    "vafz": {
+        "Description": "velocity correlation function along z-axis",
+        "xvg_info": "@ title \"Velocity Correlation Function along z-axis\"\n@ xaxis  label \"Time (fs)\"\n@ yaxis  label \"<vz(0).vz(t)>\"\n@ TYPE xy",
+        "xvg_filename": "vcfZ.xvg",
+        "dp_command": "--vcorrZ",
+        "id": 5
+    },
+    "vafr": {
+        "Description": "velocity correlation function projected radially",
+        "xvg_info": "@ title \"Velocity Correlation Function projected radially\"\n@ xaxis  label \"Time (fs)\"\n@ yaxis  label \"<vr(0).vr(t)>\"\n@ TYPE xy",
+        "xvg_filename": "vcfR.xvg",
+        "dp_command": "--vcorrR ",
+        "id": 6
+    },
+    "cvaf": {
+        "Description": "charge velocity autocorrelation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 7
+    },
+    "dcf": {
+        "Description": "dipole correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 8
+    },
+    "lcf": {
+        "Description": "Lengendre correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 9
+    },
+    "lcfz": {
+        "Description": "Lengendre correlation function binned by z",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 10
+    },
+    "lcfohz": {
+        "Description": "Lengendre correlation function for OH bond vectors binned by z",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 11
+    },
+    "sdcf": {
+        "Description": "System dipole correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 12
+    },
+    "rmsd": {
+        "Description": "Radial mean squared displacement",
+        "xvg_info": "@ title \"Radial Mean Squared Displacement\"\n@ xaxis label \"Time (fs)\"\n@ yaxis label \"Radial MSD (nm)\"\n@ TYPE xy\n@ subtitle \"MSD (radial projection)\"",
+        "xvg_filename": "radial_msd.xvg",
+        "dp_command": "--r_rcorr",
+        "id": 13
+    },
+    "amsd": {
+        "Description": "Angular mean squared displacement",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 14
+    },
+    "dmsd": {
+        "Description": "Directional mean squared displacement for particles with unit vectors",
+        "xvg_info": "@ title \"Directional Mean Squared Displacement\"\n@ xaxis label \"Time (fs)\"\n@ yaxis label \"radius (nm)\"\n@ TYPE xy\n@     subtitle \"DirectionalRCorrFunc\"\n@ legend on\n@ legend box on\n@ legend loctype view\n@ s0 legend \"r2\"\n@ s1 legend \"rparallel\"\n@ s2 legend \"rperpendicular\"",
+        "xvg_filename": "directional_msd.xvg",
+        "dp_command": "--drcorr",
+        "id": 15
+    },
+    "hmtc": {
+        "Description": "Helfand moment for thermal conductvity",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 16
+    },
+    "hmv": {
+        "Description": "Helfand momentum for viscosity",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 17
+    },
+    "stcof": {
+        "Description": "Stress tensor correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 18
+    },
+    "becf": {
+        "Description": "Bond extension correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 19
+    },
+    "ffcf": {
+        "Description": "Frequency Fluctuation correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 20
+    },
+    "hbjtcf": {
+        "Description": "Hydrogen bond jump time correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 21
+    },
+    "hbjtcfbz": {
+        "Description": "Hydrogen bond jump time correlation function binned by Z",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 22
+    },
+    "hbpcf": {
+        "Description": "Hydrogen bond persistence correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 23
+    },
+    "mamccf": {
+        "Description": "Momentum - Angular Momentum cross correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 24
+    },
+    "ftccf": {
+        "Description": "Force - Torque cross correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 25
+    },
+    "ffacf": {
+        "Description": "Force - Force auto correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 26
+    },
+    "tfccf": {
+        "Description": "Torque - Force Cross correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 27
+    },
+    "tacf": {
+        "Description": "Torque auto correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 28
+    },
+    "dcf": {
+        "Description": "Displacement correlation function",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 29
+    },
+    "dcfbz": {
+        "Description": "Displacement correlation function binned by Z",
+        "xvg_info": "",
+        "xvg_filename": "",
+        "dp_command": "",
+        "id": 30
+    }
+}

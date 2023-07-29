@@ -1,0 +1,200 @@
+#!/bin/bash
+
+export PATH="/usr/local/openmd/bin:$PATH"
+
+function Static(){
+	declare stat=$2
+	declare graph=$3
+	declare bool=$4
+
+	echo "" > stat.md
+	echo "@ title \"Statistic Props\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ xaxis  label \"Time (fs)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ yaxis  label \"propVal\"" >> stat.md;
+	echo "@ TYPE xy" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ subtitle \"StatProps\"" >> stat.md;
+	echo "@ legend on" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ legend box on" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ legend loctype view" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s0 legend \"Total Energy(kcal/mol)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s1 legend \"Potential Energy(kcal/mol)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s2 legend \"Kinetic Energy(kcal/mol)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s3 legend \"Temperature(K)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s4 legend \"Pressure(atm)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s5 legend \"Volume(A^3)\"" >> stat.md;
+	echo "" >> stat.md;
+	echo "@ s6 legend \"Conserved Quantity(kcal/mol)\"" >> stat.md;
+	echo "" >> stat.md;
+
+	echo "STAT file: ${stat}";
+	echo '';
+	echo "Graph file?: ${bool}";
+	echo '';
+
+	cat stat.md ${stat} > stat.xvg;
+	rm stat.md;
+	if [[ bool ]]; then
+		xmgrace -nxy stat.xvg;
+	fi
+	gracebat -nxy stat.xvg -printfile stat.ps; 
+
+	exit 1
+}
+
+function Dynamic(){
+	declare dump=$2
+	declare mystep=$3
+	declare mysolute=$4
+
+	echo "" > rmsd.md
+	echo "@ title \"Root-Mean Squared Displacement\"" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@ xaxis  label \"Time (fs)\"" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@ yaxis  label \"corrVal\"" >> rmsd.md;
+	echo "@	TYPE xy" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@	subtitle \"RMSD ${mystep}\"" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@	legend on" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@	legend loctype view" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@	s0 legend \"${mysolute}\"" >> rmsd.md;
+	echo "" >> rmsd.md;
+	echo "@	s1 legend \"${mysolute}_RB\"" >> rmsd.md;
+	echo "" >> rmsd.md;
+
+	echo "" > radial_msd.md;
+	echo "@ title \"Radial Mean Squared Displacement\"" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ xaxis  label \"Time (fs)\"" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ yaxis  label \"Radial MSD (nm)\"" >> radial_msd.md;
+	echo "@ TYPE xy" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ subtitle \"MSD (radial projection)\"" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ legend on" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ legend box on" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ legend loctype view" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@ s0 legend \"${mysolute}\"" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+	echo "@	s1 legend \"${mysolute}_RB\"" >> radial_msd.md;
+	echo "" >> radial_msd.md;
+
+	echo "@ title \"directional Mean Squared Displacement\"" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ xaxis  label \"Time (fs)\"" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ yaxis  label \"radius (nm)\"" >> directional_msd.md;
+	echo "@ TYPE xy" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ subtitle \"DirectionalRCorrFunc\"" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ legend on" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ legend box on" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ legend loctype view" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ s0 legend \"r2\"" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ s1 legend \"rparallel\"" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+	echo "@ s2 legend \"rperpendicular\"" >> directional_msd.md;
+	echo "" >> directional_msd.md;
+
+	echo "DUMP file: ${dump}"
+	echo '';
+	echo "Step: ${mystep}"
+	echo '';
+	echo "Selection file: ${mysolute}"
+	echo '';
+	echo "${mystep}::RMSD";
+	echo '';
+	DynamicProps --rcorr --input=${dump} --sele1="select ${mysolute}" --output=rmsd_${mystep}.xvg;
+	echo '';
+	DynamicProps --rcorr --input=${dump} --sele1="select ${mysolute}_RB_*" --output=rmsd_RB_${mystep}.xvg;
+	echo '';
+
+	echo "${mystep}::Radial MSD";
+	DynamicProps --r_rcorr --input=${dump} --sele1="select ${mysolute}" --output=radial_msd_${mystep}.xvg;
+	echo '';
+	DynamicProps --r_rcorr --input=${dump} --sele1="select ${mysolute}_RB_*" --output=radial_msd_RB_${mystep}.xvg;
+	echo '';
+
+	echo "${mystep}::directional MSD";
+	DynamicProps --drcorr --input=${dump} --sele1="select ${mysolute}" --output=pre_directional_msd_${mystep}.xvg;
+	echo '';
+	DynamicProps --drcorr --input=${dump} --sele1="select ${mysolute}_RB_*" --output=pre_directional_msd_RB_${mystep}.xvg;
+	echo '';
+
+	cat rmsd.md rmsd_${mystep}.xvg > rmsd_${mystep}_${mysolute}.xvg;
+	rm rmsd_${mystep}.xvg;
+	xmgrace -nxy rmsd_${mystep}_${mysolute}.xvg rmsd_RB_${mystep}.xvg;
+	gracebat -nxy rmsd_${mystep}_${mysolute}.xvg rmsd_RB_${mystep}.xvg -printfile rmsd_${mystep}.ps;
+
+	cat radial_msd.md radial_msd_${mystep}.xvg > radial_msd_${mystep}_${mysolute}.xvg;
+	rm radial_msd_${mystep}.xvg;
+	xmgrace -nxy radial_msd_${mystep}_${mysolute}.xvg radial_msd_RB_${mystep}.xvg;
+	gracebat -nxy radial_msd_${mystep}_${mysolute}.xvg radial_msd_RB_${mystep}.xvg -printfile radial_msd_${mystep}.ps;
+
+	sed "s/-nan/0/g" pre_directional_msd_${mystep}.xvg > directional_msd_${mystep}.xvg;
+	sed "s/-nan/0/g" pre_directional_msd_RB_${mystep}.xvg > directional_msd_RB_${mystep}.xvg;
+
+	cat directional_msd.md directional_msd_${mystep}.xvg > directional_msd_${mystep}_${mysolute}.xvg;
+	cat directional_msd.md directional_msd_RB_${mystep}.xvg > directional_msd_RB_${mystep}_${mysolute}.xvg;
+	rm directional_msd_${mystep}.xvg;
+	rm pre_directional_msd_${mystep}.xvg
+	rm pre_directional_msd_RB_${mystep}.xvg
+
+	xmgrace -nxy directional_msd_RB_${mystep}_${mysolute}.xvg;
+	gracebat -nxy directional_msd_${mystep}_${mysolute}.xvg -printfile directional_msd_${mystep}.ps;
+	gracebat -nxy directional_msd_RB_${mystep}_${mysolute}.xvg  -printfile directional_msd_RB_${mystep}.ps;
+
+	rm rmsd.md radial_msd.md directional_msd.md;
+	exit 1
+}
+
+function usage {
+cat << EOF
+	For StatProps
+	Usage::  MSBMDAnalyzer -s <file.stat> -g <true|false>
+
+	For DynamicsProps
+	Usage::  MSBMDAnalyzer -d <file.dump> <StepName> <Molecule_select>
+EOF
+   exit 1
+}
+
+declare total_arg=$#
+if [[ $total_arg -ne 4 ]];then
+	usage
+else # 1 argue
+	if [[  "$1" == "-s" ]] && [[ "$3" == "-g" ]]; then
+		if [[ "$4" == "true" ]] || [[ "$4" == "false" ]]; then
+			Static $1 $2 $3 $4 
+		else
+			usage
+		fi
+	elif [[ "$1" == "-d" ]]; then
+		Dynamic $1 $2 $3 $4 
+	else
+		usage
+	fi
+fi
